@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>EVEXEY - 团体介绍</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        /* 交互效果 */
+        .hover-content {
+            display: none;
+            padding: 10px;
+            background: #f8f8f8;
+        }
+        li:hover .hover-content {
+            display: block;
+        }
+        .slide-button {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .show-button {
+            max-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 默认首页 -->
+    <section id="home">
+        <h1>EVEXEY</h1>
+        <table>
+            <tr>
+                <td><strong>介绍</strong></td>
+                <td>我们所有人，都在这，查看吧，信息，故事，历史，包括整个集合体</td>
+            </tr>
+            <tr>
+                <td><strong>记录</strong></td>
+                <td>更多支持</td>
+            </tr>
+            <tr>
+                <td><strong>关系</strong></td>
+                <td>更多帮助</td>
+            </tr>
+            <tr>
+                <td><strong>成员</strong></td>
+                <td>更多帮助</td>
+            </tr>
+        </table>
+        <div style="margin-top:30px; color:#666">
+            内容内容内容内容
+        </div>
+    </section>
+
+    <!-- 记录分类 -->
+    <section id="records" style="display:none;">
+        <h2>更多支持</h2>
+        <div style="margin:15px 0; padding:10px; border-left:3px solid #3498db;">
+            根据内容来调整长度
+        </div>
+        <h2>更多帮助</h2>
+    </section>
+
+    <!-- 关系分类 -->
+    <section id="relations" style="display:none;">
+        <ul>
+            <li>TOT工作室
+                <div class="hover-content">
+                    基础关联工作室
+                </div>
+            </li>
+            <li>AT工作室
+                <div class="hover-content">
+                    是4444创造的另一个团队
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 成员分类 -->
+    <section id="members" style="display:none;">
+        <ul>
+            <li onclick="toggleButton(this)">EXEVEY
+                <div class="slide-button">
+                    <button style="margin-top:5px;">前往个人信息</button>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <script>
+        // 简单交互逻辑
+        function toggleButton(element) {
+            const button = element.querySelector('.slide-button');
+            button.classList.toggle('show-button');
+        }
+
+        // 分类切换逻辑（可根据需要扩展）
+        document.querySelectorAll('td').forEach(item => {
+            item.addEventListener('click', function() {
+                const sections = document.querySelectorAll('section');
+                sections.forEach(sec => sec.style.display = 'none');
+                if(this.innerText.includes('记录')) document.getElementById('records').style.display = 'block';
+                if(this.innerText.includes('关系')) document.getElementById('relations').style.display = 'block';
+                if(this.innerText.includes('成员')) document.getElementById('members').style.display = 'block';
+            })
+        })
+    </script>
+</body>
+</html>
